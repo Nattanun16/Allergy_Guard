@@ -1,0 +1,5 @@
+services:
+  allergy-guard:
+    build: .
+    ports:
+      - "8080:80"
