@@ -87,6 +87,7 @@
       top: 0;
       z-index: 300;
       background: rgba(255, 255, 255, .96);
+      -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--sm);
       box-shadow: var(--sh1)
@@ -1785,7 +1786,7 @@
           <div class="r2">
             <div class="fg"><label>อายุ (ปี)</label><input type="number" id="rAge" placeholder="30" min="1" max="120">
             </div>
-            <div class="fg"><label>เพศ</label><select id="rSex">
+            <div class="fg"><label>เพศ</label><select id="rSex" title="เพศ">
                 <option value="">—เลือก—</option>
                 <option>ชาย</option>
                 <option>หญิง</option>
@@ -1797,14 +1798,14 @@
             <div class="fg"><label>ส่วนสูง (ซม.)</label><input type="number" id="rHt" placeholder="170"></div>
           </div>
           <div class="r2">
-            <div class="fg"><label>กรุ๊ปเลือด</label><select id="rBld">
+            <div class="fg"><label>กรุ๊ปเลือด</label><select id="rBld" title="กรุ๊ปเลือด">
                 <option value="">ไม่ทราบ</option>
                 <option>A</option>
                 <option>B</option>
                 <option>O</option>
                 <option>AB</option>
               </select></div>
-            <div class="fg"><label>ครอบครัวแพ้</label><select id="rFam">
+            <div class="fg"><label>ครอบครัวแพ้</label><select id="rFam" title="ประวัติครอบครัวแพ้">
                 <option value="0">ไม่มี</option>
                 <option value="1">พ่อหรือแม่</option>
                 <option value="2">ทั้งคู่</option>
@@ -1817,12 +1818,12 @@
         <div id="rs3" class="hidden">
           <div class="step-cap">ขั้นตอน 3/3 — วิถีชีวิต & ประวัติแพ้</div>
           <div class="r2">
-            <div class="fg"><label>สภาพแวดล้อม</label><select id="rEnv">
+            <div class="fg"><label>สภาพแวดล้อม</label><select id="rEnv" title="สภาพแวดล้อมที่อยู่อาศัย">
                 <option value="urban">เมือง/มลภาวะสูง</option>
                 <option value="suburban">ชานเมือง</option>
                 <option value="rural">ชนบท</option>
               </select></div>
-            <div class="fg"><label>อาชีพ</label><select id="rJob">
+            <div class="fg"><label>อาชีพ</label><select id="rJob" title="อาชีพ">
                 <option value="">—เลือก—</option>
                 <option value="office">พนักงานออฟฟิศ</option>
                 <option value="outdoor">งานนอกสถานที่</option>
@@ -1832,7 +1833,7 @@
                 <option value="other">อื่นๆ</option>
               </select></div>
           </div>
-          <div class="fg"><label>สัตว์เลี้ยง</label><select id="rPet">
+          <div class="fg"><label>สัตว์เลี้ยง</label><select id="rPet" title="สัตว์เลี้ยงในบ้าน">
               <option value="0">ไม่มี</option>
               <option value="1">มี (สุนัข/แมวในบ้าน)</option>
               <option value="0.5">มี (อยู่นอกบ้าน)</option>
@@ -1950,12 +1951,12 @@
           <div class="card-t">
             <div class="ct-ic" style="background:var(--tl)">⚙️</div>ปัจจัยเสริม
           </div>
-          <div class="fg"><label>สภาพแวดล้อม</label><select id="aEnv">
+          <div class="fg"><label>สภาพแวดล้อม</label><select id="aEnv" title="สภาพแวดล้อมที่อยู่อาศัย">
               <option value="urban">เมือง/มลภาวะสูง</option>
               <option value="suburban">ชานเมือง</option>
               <option value="rural">ชนบท</option>
             </select></div>
-          <div class="fg"><label>ฤดูที่อาการรุนแรงขึ้น</label><select id="aSeas">
+          <div class="fg"><label>ฤดูที่อาการรุนแรงขึ้น</label><select id="aSeas" title="ฤดูที่อาการรุนแรงขึ้น">
               <option value="any">ตลอดทั้งปี</option>
               <option value="spring">ดอกไม้บาน</option>
               <option value="rainy">ฤดูฝน</option>
@@ -1963,9 +1964,11 @@
               <option value="night">กลางคืน/เช้าตรู่</option>
             </select></div>
           <div class="slr"><span class="slr-l">ความรุนแรง</span><input type="range" id="aSev" min="1" max="10" value="5"
-              oninput="$('sO').textContent=this.value+'/10'"><span class="slr-v" id="sO">5/10</span></div>
+              title="ระดับความรุนแรงของอาการ 1-10" oninput="$('sO').textContent=this.value+'/10'"><span class="slr-v"
+              id="sO">5/10</span></div>
           <div class="slr"><span class="slr-l">ระยะเวลา</span><input type="range" id="aDur" min="1" max="24" value="3"
-              oninput="$('dO').textContent=this.value+' เดือน'"><span class="slr-v" id="dO">3 เดือน</span></div>
+              title="ระยะเวลาที่มีอาการ (เดือน)" oninput="$('dO').textContent=this.value+' เดือน'"><span class="slr-v"
+              id="dO">3 เดือน</span></div>
           <div class="fg" style="margin-top:.5rem"><label>สิ่งที่สงสัยว่าเป็นตัวกระตุ้น</label><textarea id="aNote"
               placeholder="เช่น หลังกินอาหารทะเล, สัมผัสแมว, ออกกำลังกายกลางแจ้ง, ฝุ่น..."></textarea></div>
         </div>
@@ -2013,9 +2016,9 @@
           <div class="ct-ic" style="background:var(--vl)">✏️</div>เพิ่มบันทึกวันนี้
         </div>
         <div class="r2">
-          <div class="fg"><label>วันที่</label><input type="date" id="dDate"></div>
+          <div class="fg"><label>วันที่</label><input type="date" id="dDate" title="วันที่บันทึก"></div>
           <div class="fg"><label>ระดับอาการโดยรวม</label>
-            <select id="dLevel">
+            <select id="dLevel" title="ระดับความรุนแรงของอาการโดยรวม">
               <option value="1">1 — ไม่มีอาการ ✅</option>
               <option value="2">2 — เล็กน้อย 🟡</option>
               <option value="3" selected>3 — ปานกลาง 🟠</option>
@@ -2324,28 +2327,34 @@
       <button class="modal-x" onclick="closeModal('editModal')">✕</button>
       <div class="modal-t">✏️ แก้ไขข้อมูลส่วนตัว</div>
       <div class="r2">
-        <div class="fg"><label>ชื่อ-นามสกุล</label><input id="eName"></div>
-        <div class="fg"><label>อายุ (ปี)</label><input type="number" id="eAge"></div>
+        <div class="fg"><label>ชื่อ-นามสกุล</label><input id="eName" title="ชื่อ-นามสกุล" placeholder="เช่น สมชาย ใจดี">
+        </div>
+        <div class="fg"><label>อายุ (ปี)</label><input type="number" id="eAge" title="อายุ (ปี)" placeholder="30"></div>
       </div>
       <div class="r2">
-        <div class="fg"><label>น้ำหนัก (กก.)</label><input type="number" id="eWt"></div>
-        <div class="fg"><label>ส่วนสูง (ซม.)</label><input type="number" id="eHt"></div>
+        <div class="fg"><label>น้ำหนัก (กก.)</label><input type="number" id="eWt" title="น้ำหนัก (กก.)"
+            placeholder="65"></div>
+        <div class="fg"><label>ส่วนสูง (ซม.)</label><input type="number" id="eHt" title="ส่วนสูง (ซม.)"
+            placeholder="170"></div>
       </div>
       <div class="r2">
-        <div class="fg"><label>สภาพแวดล้อม</label><select id="eEnv">
+        <div class="fg"><label>สภาพแวดล้อม</label><select id="eEnv" title="สภาพแวดล้อมที่อยู่อาศัย">
             <option value="urban">เมือง/มลภาวะสูง</option>
             <option value="suburban">ชานเมือง</option>
             <option value="rural">ชนบท</option>
           </select></div>
-        <div class="fg"><label>สัตว์เลี้ยง</label><select id="ePet">
+        <div class="fg"><label>สัตว์เลี้ยง</label><select id="ePet" title="สัตว์เลี้ยงในบ้าน">
             <option value="0">ไม่มี</option>
             <option value="1">มี (ในบ้าน)</option>
             <option value="0.5">มี (นอกบ้าน)</option>
           </select></div>
       </div>
-      <div class="fg"><label>ประวัติแพ้อาหาร</label><input id="eFA"></div>
-      <div class="fg"><label>ประวัติแพ้ยา</label><input id="eDA"></div>
-      <div class="fg"><label>โรคประจำตัว</label><input id="eDis"></div>
+      <div class="fg"><label>ประวัติแพ้อาหาร</label><input id="eFA" title="ประวัติแพ้อาหาร"
+          placeholder="เช่น นม, ถั่ว (เว้นว่างถ้าไม่มี)"></div>
+      <div class="fg"><label>ประวัติแพ้ยา</label><input id="eDA" title="ประวัติแพ้ยา"
+          placeholder="เช่น เพนนิซิลิน (เว้นว่างถ้าไม่มี)"></div>
+      <div class="fg"><label>โรคประจำตัว</label><input id="eDis" title="โรคประจำตัวอื่นๆ"
+          placeholder="เช่น เบาหวาน, ความดัน (เว้นว่างถ้าไม่มี)"></div>
       <div class="brow"><button class="btn-ghost" onclick="closeModal('editModal')">ยกเลิก</button><button
           class="btn-t full" onclick="saveProfile()">💾 บันทึก</button></div>
     </div>
